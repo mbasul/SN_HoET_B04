@@ -25,8 +25,10 @@ choice_df.show()
 #price_df = choice_df.select(col('PRICE'))
 price = choice_df.select(col('PRICE')).to_pandas().iloc[0]["PRICE"]
 st.write('Price: '+str(price))
-#url = choice_df.select(col('FILE_URL')).to_pandas().iloc[0]["FILE_URL"]
-#st.write('URL '+str(url))
+
+image_path = choice_df.select(col('FILE_URL')).to_pandas().iloc[0]["FILE_URL"]
+st.image(image_path, caption=option, use_column_width=True)
+
 size_list = choice_df.select(col('SIZE_LIST')).to_pandas().iloc[0]["SIZE_LIST"]
 st.write('Sizes available:  '+str(size_list))
 upsell = choice_df.select(col('UPSELL_PRODUCT_DESC')).to_pandas().iloc[0]["UPSELL_PRODUCT_DESC"]
